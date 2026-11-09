@@ -1,0 +1,115 @@
+/* Oro Rojo — styles */
+body{margin:0;background:#000}
+a{color:#D9B867}a:hover{color:#F0D58E}
+.ln{fill:none;stroke:#C9A24A;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.lnf{fill:#C9A24A;stroke:none}
+.fl{position:absolute;pointer-events:none;z-index:0;opacity:.55}
+.f1{animation:floatA 11s ease-in-out infinite}
+.f2{animation:floatB 13s ease-in-out infinite}
+.f3{animation:floatC 12s ease-in-out infinite}
+.f4{animation:floatA 15s ease-in-out infinite reverse}
+@keyframes floatA{0%,100%{transform:translateY(0) rotate(-10deg)}50%{transform:translateY(-20px) rotate(4deg)}}
+@keyframes floatB{0%,100%{transform:translate(0,0) rotate(8deg)}50%{transform:translate(12px,-16px) rotate(-5deg)}}
+@keyframes floatC{0%,100%{transform:translateY(0) rotate(0)}33%{transform:translateY(-12px) rotate(-9deg)}66%{transform:translateY(6px) rotate(7deg)}}
+.cover{-webkit-mask-image:radial-gradient(ellipse 62% 64% at 50% 48%,#000 70%,transparent 100%);mask-image:radial-gradient(ellipse 62% 64% at 50% 48%,#000 70%,transparent 100%)}
+/* loader: "Oro Rojo" is signed stroke by stroke, the flourish becomes a gold seam, and the page opens along it */
+.ld{animation:ldEnd .01s linear 3.05s forwards}
+@keyframes ldEnd{to{visibility:hidden}}
+.ld-top{animation:upOut .8s cubic-bezier(.76,0,.24,1) 2.2s forwards}
+.ld-bot{animation:downOut .8s cubic-bezier(.76,0,.24,1) 2.2s forwards}
+@keyframes upOut{to{transform:translateY(-100%)}}
+@keyframes downOut{to{transform:translateY(100%)}}
+.ld-seam{transform:scaleX(0);animation:seam .4s cubic-bezier(.65,0,.35,1) 1.85s forwards,seamOut .5s ease 2.35s forwards}
+@keyframes seam{to{transform:scaleX(1)}}
+@keyframes seamOut{to{opacity:0}}
+.sig .st{fill:none;stroke:url(#goldpen);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1}
+.sig .s1{animation:draw .32s cubic-bezier(.45,0,.4,1) .1s forwards}
+.sig .s2{animation:draw .3s cubic-bezier(.45,0,.4,1) .44s forwards}
+.sig .s3{animation:draw .1s cubic-bezier(.45,0,.4,1) .76s forwards}
+.sig .s4{animation:draw .26s cubic-bezier(.45,0,.4,1) .87s forwards}
+.sig .s5{animation:draw .45s cubic-bezier(.45,0,.4,1) 1.14s forwards}
+.sig .s6{animation:draw .3s cubic-bezier(.5,0,.3,1) 1.58s forwards}
+.sig .dot{opacity:0;animation:dotin .15s ease 1.55s forwards}
+.in-book{opacity:0;transform:translateY(60px) scale(1.08);filter:blur(8px);animation:book 1.8s cubic-bezier(.16,1,.3,1) 2.5s forwards}
+@keyframes book{to{opacity:1;transform:none;filter:blur(0)}}
+.in-l{opacity:0;transform:translateX(-80px);animation:slide 1.6s cubic-bezier(.16,1,.3,1) 2.65s forwards}
+.in-r{opacity:0;transform:translateX(80px);animation:slide 1.6s cubic-bezier(.16,1,.3,1) 2.78s forwards}
+@keyframes slide{to{opacity:1;transform:none}}
+.in-f{opacity:0;animation:fade 1.2s ease 3.2s forwards}
+@keyframes fade{to{opacity:1}}
+.sc{animation:scr 2.4s cubic-bezier(.65,0,.35,1) infinite}
+@keyframes scr{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.ul{text-decoration:underline;text-decoration-color:#C9A24A;text-underline-offset:9px;text-decoration-thickness:1px}
+.ul:hover{color:#F0D58E}
+.nl:hover{color:#F0D58E}
+.ul-d{text-decoration:underline;text-decoration-color:#C9A24A;text-underline-offset:9px;text-decoration-thickness:1px}
+.ul-d:hover{color:#4F3A0E}
+
+/* chapter spines */
+.spines{display:flex;height:620px}
+.spine{position:relative;flex:1 1 0;min-width:0;overflow:hidden;background:#000;border:none;border-left:1px solid rgba(201,162,74,.28);padding:0;margin:0;cursor:pointer;text-align:left;color:#EFE6D2;font:inherit;transition:flex-grow .9s cubic-bezier(.16,1,.3,1),background-color .6s}
+.spine:last-child{border-right:1px solid rgba(201,162,74,.28)}
+.spine.on{flex-grow:5;background:#0D0A07;cursor:default}
+.spine:not(.on):hover{background:#0A0806}
+.spine:focus-visible{outline:2px solid #E2C376;outline-offset:-4px}
+.spine .lbl{position:absolute;inset:36px 0;display:flex;flex-direction:column;align-items:center;justify-content:space-between;transition:opacity .4s}
+.spine.on .lbl{opacity:0}
+.vt{writing-mode:vertical-rl;transform:rotate(180deg)}
+.spine .det{position:absolute;top:40px;left:44px;bottom:40px;width:calc(100% - 88px);min-width:340px;display:flex;flex-direction:column;opacity:0;transform:translateY(18px);transition:opacity .5s ease .2s,transform .8s cubic-bezier(.16,1,.3,1) .2s}
+.spine.on .det{opacity:1;transform:none}
+@media (max-width:760px){
+  .side{display:none}
+  .spines{flex-direction:column;height:auto}
+  .spine{flex:none;min-height:84px;border-left:none;border-right:none;border-top:1px solid rgba(201,162,74,.28);transition:min-height .8s cubic-bezier(.16,1,.3,1)}
+  .spine.on{min-height:600px}
+  .spine .lbl{inset:0 24px;flex-direction:row}
+  .spine .vt{writing-mode:horizontal-tb;transform:none}
+  .spine .det{top:28px;left:24px;bottom:28px;width:calc(100% - 48px);min-width:0}
+}
+.tab-d:hover{color:#F0D58E}
+/* hand-drawn dish illustrations */
+.lnr{fill:none;stroke:#C8553A;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.lnrf{fill:#C8553A;stroke:none}
+.dw .ln,.dw .lnr{stroke-dasharray:1;stroke-dashoffset:0}
+.spine.on .dw .ln,.spine.on .dw .lnr,.dw-a .ln,.dw-a .lnr{animation:draw 2.4s cubic-bezier(.65,0,.35,1) .35s both}
+.spine.on .dw .lnf,.spine.on .dw .lnrf,.dw-a .lnf,.dw-a .lnrf{animation:dotin .8s ease 1.9s both}
+@keyframes draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@keyframes dotin{from{opacity:0}to{opacity:1}}
+.fin{background:transparent;border:none;border-bottom:1px solid #C9A24A;color:#EFE6D2;font:inherit;padding:10px 0;width:100%;outline:none}
+.fin::placeholder{color:#8F8470}
+.fin:focus{border-bottom-color:#F0D58E}
+.fbtn:hover{background:#E2C376}
+/* metallic gold signature ink */
+.gold-ink{background:linear-gradient(100deg,#9C7424 0%,#E8CC7A 30%,#B8892E 50%,#F6E3A6 70%,#9C7424 100%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:shine 6s ease-in-out infinite;padding:0 .2em}
+.gold-ink-d{background:linear-gradient(100deg,#6E4F12 0%,#B8892E 35%,#7A5A17 55%,#C9A24A 75%,#6E4F12 100%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:shine 6s ease-in-out infinite;padding:0 .2em}
+@keyframes shine{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+/* scroll handwriting: ink appears left to right as the line scrolls into view */
+.dw-s .ln,.dw-s .lnr{animation:draw 2.4s cubic-bezier(.65,0,.35,1) .35s both}
+.dw-s .lnf,.dw-s .lnrf{animation:dotin .8s ease 1.9s both}
+@keyframes hw{from{-webkit-mask-position:100% 0;mask-position:100% 0}to{-webkit-mask-position:0 0;mask-position:0 0}}
+@supports (animation-timeline: view()){
+  .hw{-webkit-mask-image:linear-gradient(90deg,#000 0%,#000 40%,transparent 60%,transparent 100%);mask-image:linear-gradient(90deg,#000 0%,#000 40%,transparent 60%,transparent 100%);-webkit-mask-size:260% 100%;mask-size:260% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;animation:hw linear both;animation-timeline:view();animation-range:entry 0% cover 38%}
+  .dw-s .ln,.dw-s .lnr{animation:draw linear both;animation-timeline:view();animation-range:entry 10% cover 45%}
+  .dw-s .lnf,.dw-s .lnrf{animation:dotin linear both;animation-timeline:view();animation-range:cover 35% cover 50%}
+}
+@media (prefers-reduced-motion:reduce){.hw{animation:none;-webkit-mask-image:none;mask-image:none}}
+@media (prefers-reduced-motion:reduce){.gold-ink,.gold-ink-d{animation:none}}
+@media (prefers-reduced-motion:reduce){.f1,.f2,.f3,.f4,.sc{animation:none}.ld{display:none}.in-book,.in-l,.in-r,.in-f{animation:none;opacity:1;transform:none;filter:none}.spine,.spine .det,.spine .lbl{transition:none}.dw .ln,.dw .lnr,.dw .lnf,.dw .lnrf{animation:none!important;stroke-dashoffset:0;opacity:1}}
+
+/* static-site additions */
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+img{max-width:100%}
+.tab{font:inherit;letter-spacing:inherit;text-transform:inherit;padding:12px 0;min-height:44px;border:none;background:none;color:#8F8470;cursor:pointer;text-decoration:underline;text-decoration-color:transparent;text-underline-offset:9px;transition:color .3s,text-decoration-color .3s}
+.tab:hover{color:#F0D58E}
+.tab.on{color:#E2C376;text-decoration-color:#C9A24A}
+.tab:focus-visible,.spine:focus-visible,a:focus-visible,button:focus-visible{outline:2px solid #E2C376;outline-offset:3px}
+.rp[hidden]{display:none}
+.rp{animation:rpIn .6s cubic-bezier(.16,1,.3,1)}
+@keyframes rpIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.rp{animation:none}}
+@media (max-width:760px){
+  #top nav{padding:20px 20px!important}
+  #top nav a.nl{display:none}
+  #top h1 .in-l{top:15%!important}
+}
